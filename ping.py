@@ -39,9 +39,13 @@ def ping_user(to: str, client: Client):
 
 
 def main():
+    if len(sys.argv) < 2:
+        print("Usage: python ping.py <email>")
+        sys.exit(1)
+
     # For testing, ping ourselves since we have our own DID document
     client = Client.load()
-    to = sys.argv[1] if len(sys.argv) > 1 else client.config.email
+    to = sys.argv[1]
     print(f"🌐 Logged in to {client.config.server_url} as {client.config.email}")
 
     print(f"🏓 Pinging: {to}")
