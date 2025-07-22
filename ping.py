@@ -6,18 +6,11 @@ import syft_rpc
 from syft_core import Client
 from syft_rpc.rpc import make_url
 
-# Import bootstrap functionality
-# Import shared crypto utilities
 from crypto_utils import (
     EncryptedPayload,
     decrypt_message,
     encrypt_message,
 )
-
-# EncryptedPayload imported from crypto_utils
-
-
-# Bootstrap functions moved to bootstrap.py
 
 
 def ping_user(to: str, client: Client):
@@ -29,8 +22,9 @@ def ping_user(to: str, client: Client):
     try:
         tstart = time.time()
         # Send encrypted ping and get encrypted pong response
+        print(f"📡 Sending encrypted ping to {to}")
         future = syft_rpc.send(url=uri, body=enc)
-        print(f"📡 Sent encrypted ping to {to}")
+        print("🕒 Waiting for response...")
         response = future.wait(timeout=300)
         response.raise_for_status()
         print(f"📨 Received encrypted pong from {to}")
@@ -47,10 +41,10 @@ def ping_user(to: str, client: Client):
 def main():
     # For testing, ping ourselves since we have our own DID document
     client = Client.load()
-    to = client.config.email  # Ping ourselves for testing
+    to = sys.argv[1] if len(sys.argv) > 1 else client.config.email
     print(f"🌐 Logged in to {client.config.server_url} as {client.config.email}")
 
-    print(f"🏓 Testing encrypt/decrypt by pinging ourselves: {to}")
+    print(f"🏓 Pinging: {to}")
     ping_user(to, client)
 
 
