@@ -1,0 +1,24 @@
+[project]
+name = "syft-enc"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "syft-core>=0.2.8",
+    "syft-rpc>=0.2.8",
+    "cryptography>=41.0.0",
+    "jwcrypto>=1.5.6",
+    "pydid>=0.5.2",
+    "syft-event>=0.2.8",
+    "loguru>=0.7.3",
+]
+
+[tool.ruff]
+exclude = [".venv", "dist", ".clients", ".e2e", ".server"]
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["F401"]
