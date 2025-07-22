@@ -38,7 +38,7 @@ def simulate_server_side(incoming_payload: EncryptedPayload):
 
     client = Client.load()  # Server loads its own client to access keys
 
-    print(f"📨 Received encrypted payload:")
+    print("📨 Received encrypted payload:")
     print(f"   - From: {incoming_payload.sender}")
     print(f"   - To: {incoming_payload.receiver}")
 
@@ -66,7 +66,7 @@ def simulate_client_receives_response(response_payload: EncryptedPayload):
 
     client = Client.load()
 
-    print(f"📨 Received encrypted response:")
+    print("📨 Received encrypted response:")
     print(f"   - From: {response_payload.sender}")
     print(f"   - To: {response_payload.receiver}")
 

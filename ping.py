@@ -1,4 +1,3 @@
-import json
 import sys
 import time
 from datetime import datetime, timezone
@@ -8,14 +7,11 @@ from syft_core import Client
 from syft_rpc.rpc import make_url
 
 # Import bootstrap functionality
-from bootstrap import bootstrap_user
-
 # Import shared crypto utilities
 from crypto_utils import (
     EncryptedPayload,
     decrypt_message,
     encrypt_message,
-    private_key_path,
 )
 
 # EncryptedPayload imported from crypto_utils
